@@ -13,15 +13,17 @@
 .path1 {
     stroke: #000;
     stroke-dasharray: 6884;
-    animation: drawPath1 1s linear, floating 2.2s linear infinite;
+    z-index: 9;
 }
 
 .content1 {
     background-color: #000;
+    z-index: 2;
 }
 
 .path2 {
     stroke: #fff;
+    z-index: 1;
 }
 
 .content2 {
@@ -42,11 +44,5 @@
     }
     100% {
         stroke-dashoffset: 0;
-    }
-}
-
-@keyframes floating {
-    50% {
-        transform: translate3d(0, 40px, 0);
     }
 }
