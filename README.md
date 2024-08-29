@@ -3,7 +3,9 @@
 ## To-Do
 - [ ] OpenScience Project → Use reinforcing ecology map (BackEnd, https://www.naturing.net/)
 - [ ] Ecology Map
-- [ ] Automate seminars (1. Python / 2. js async github function)
-- [ ] Design main page (with SVG file managing)
+- [ ] Fix a bug : navigation bar toggling for seminars
+- [x] Automate seminars (js async github function)
+- [ ] Design main page (with SVG)
 - [ ] Other pages: awards / researches / calendar
+- [ ] Responsive Web Design for mobile
 - [ ] Fix & Stabilize other bugs
