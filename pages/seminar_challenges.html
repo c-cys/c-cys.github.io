@@ -2,111 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대회 세미나 자료</title>
-    <script src="../scripts/navbar.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="icon" href="../assets/images/logo.png">
+    <script src="../scripts/navbar.js" defer></script>
 </head>
 <body>
-    <br><br><br><br>
-    <script>
-        let file_list = ['2023 과학동아리활동발표회 보고서', '2023 청소년 과학프로젝트 발표대회 계획서', '2023 한사챌 예산 양식', '2023GLOBE_과학동아리활동발표회(최종) (1)', '2023년 청소년 과학프로젝트 발표대회 최종보고서_GLOBE_시멘트의 탄산화양생 효율 증진 연구', '[HSC2023] 2차 예선 연구 계획 발표자료', '[HSC2023] 본선 심사 기준 및 순서 안내', '[HSC2023] 사전 제출 자료 안내', '탈플라스틱-경기북과학고-globe', '탈플라스틱공모전(GLOBE)', '한사챌 대회 요강', '한사챌 세미나 19기', '환경에너지 대회 공고']
-        let file_directory = ['2023%20과학동아리활동발표회%20보고서.pdf', '2023%20청소년%20과학프로젝트%20발표대회%20계획서.pdf', '2023%20한사챌%20예산%20양식.pdf', '2023GLOBE_과학동아리활동발표회(최종)%20(1).pdf', '2023년%20청소년%20과학프로젝트%20발표대회%20최종보고서_GLOBE_시멘트의%20탄산화양생%20효율%20증진%20연구.pdf', '[HSC2023]%202차%20예선%20연구%20계획%20발표자료.pdf', '[HSC2023]%20본선%20심사%20기준%20및%20순서%20안내.pdf', '[HSC2023]%20사전%20제출%20자료%20안내.pdf', '탈플라스틱-경기북과학고-globe.pdf', '탈플라스틱공모전(GLOBE).pdf', '한사챌%20대회%20요강.pdf', '한사챌%20세미나%2019기.pdf', '환경에너지%20대회%20공고.pdf']
-        let file_count = file_list.length;
-        let remainder = file_count%3;
-        let quotient = (file_count - remainder) / 3;
+<br><br>
+<div class="container mt-5">
+    <div id="file-list" class="row"></div>
+</div>
 
-        function find_name(n, file_list) {
-            return file_list[n-1];
-        }
-        function find_directory(n, file_directory) {
-            return '../assets/data/uploads/대회/'+file_directory[n-1];
-        }
+<script>
+    async function fetchGitHubFiles(folder) {
+        const repo = 'c-cys/c-cys.github.io';
+        const branch = 'master';
+        const apiUrl = `https://api.github.com/repos/${repo}/contents/assets/data/uploads/${folder}?ref=${branch}`;
 
-        var n = 0;
-        console.log('file_count', file_count)
-        console.log('remainder', remainder)
-        console.log('quotient', quotient)
+        const response = await fetch(apiUrl);
+        const files = await response.json();
+        return files.filter(file => file.name.endsWith('.pdf'));
+    }
 
-        // quotient
-        for (let i = 0; i < quotient; i++) {
-            document.write(`
-                <p></p>
-                <div class="container-fluid">
-                    <div class="file-container row">
-                `)
-            for (let j = 0; j < 3; j++) {
-                n += 1
-                document.write(`
-                            <div class="col-md-3 mb-3 d-flex" style="margin-left:6%">
-                                <div class="card flex-fill file-card">
-                                    <div class="card-body d-flex flex-column" id="file-card-body" style="height:540px">
-                                        <div class="file-title">
-                                            <h5 class="card-title" style="text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 16px">
-                                                `)
-                document.write(find_name(n, file_list))
-                document.write(`
-                                            </h5>
-                                        </div>
-                                        <iframe style="height:1000px" src=`)
-                document.write(find_directory(n, file_directory))
-                document.write(`></iframe>
-                                </div>
-                            </div>
-                        </div>
-                `)
-            }
-            document.write(`
-                    </div>
-                </div>`)
-        }
+    async function showFiles(folder) {
+        const files = await fetchGitHubFiles(folder);
+        const fileList = document.getElementById('file-list');
+        fileList.innerHTML = '';
 
-        // remainder
-        document.write(`
-                <p></p>
-                <div class="container-fluid">
-                    <div class="file-container row">
-            `)
-        for (let k = 0; k < remainder; k++) {
-            n += 1
-            if (remainder == 1) {
-                document.write(`
-                        <div class="col-md-3 mb-3 d-flex" style="margin-left:37%">
-                            <div class="card flex-fill file-card">
-                                <div class="card-body d-flex flex-column" id="file-card-body" style="height:540px">
-                                    <div class="file-title">
-                                        <h5 class="card-title" style="text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 16px">
-                                            `)
-            }
-            if (remainder == 2) {
-                document.write(`
-                        <div class="col-md-3 mb-3 d-flex" style="margin-left:16%">
-                            <div class="card flex-fill file-card">
-                                <div class="card-body d-flex flex-column" id="file-card-body" style="height:540px">
-                                    <div class="file-title">
-                                        <h5 class="card-title" style="text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 16px">
-                                            `)
-            }
-            document.write(find_name(n, file_list))
-            document.write(`        </h5>
-                                    </div>
-                                    <iframe style="height:1000px" src=`)
-            document.write(find_directory(n, file_directory))
-            document.write(`        ></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                `)
-        }
-        document.write(`
-                    </div>
-                </div>
-                <p></p>
-        `)
-    </script>
+        const fileCount = files.length;
+        const remainder = fileCount % 3;
 
-    <footer>
-        <script src="../scripts/footer.js"></script>
-    </footer>
+        files.forEach((file, index) => {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-md-4 mb-4 d-flex';
+
+            const cardDiv = document.createElement('div');
+            cardDiv.className = 'card flex-fill';
+
+            const cardBodyDiv = document.createElement('div');
+            cardBodyDiv.className = 'card-body d-flex flex-column';
+            cardBodyDiv.style.height = '540px';
+
+            const fileTitleDiv = document.createElement('div');
+            fileTitleDiv.className = 'file-title';
+
+            const fileTitle = document.createElement('h5');
+            fileTitle.className = 'card-title text-center';
+            fileTitle.style.whiteSpace = 'nowrap';
+            fileTitle.style.overflow = 'hidden';
+            fileTitle.style.textOverflow = 'ellipsis';
+            fileTitle.style.fontSize = '16px';
+            fileTitle.textContent = file.name;
+
+            const iframe = document.createElement('iframe');
+            iframe.style.height = '1000px';
+            iframe.src = `../assets/data/uploads/${folder}/${file.name}`;
+
+            fileTitleDiv.appendChild(fileTitle);
+            cardBodyDiv.appendChild(fileTitleDiv);
+            cardBodyDiv.appendChild(iframe);
+            cardDiv.appendChild(cardBodyDiv);
+            colDiv.appendChild(cardDiv);
+
+            fileList.appendChild(colDiv);
+        });
+    }
+
+    showFiles('대회');
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<footer>
+    <script src="../scripts/footer.js"></script>
+</footer>
 </body>
 </html>
