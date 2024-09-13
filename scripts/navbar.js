@@ -18,15 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </li>
                         
                         <li class="nav-item mx-2 dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdown2" role="menubar" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                세미나 자료
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="../pages/seminar_biology.html">생명</a>
-                                <a class="dropdown-item" href="../pages/seminar_chemistry.html">화학</a>
-                                <a class="dropdown-item" href="../pages/seminar_challenges.html">대회</a>
-                                <a class="dropdown-item" href="../pages/seminar_others.html">기타</a>
-                            </div>
+                            <a class="nav-link" href="../pages/seminar.html">세미나 자료</a>
                         </li>
                         <li class="nav-item mx-2 dropdown">
                             <a class="nav-link" href="../pages/research.html">연구 활동</a>
