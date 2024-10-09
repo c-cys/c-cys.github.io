@@ -4,6 +4,7 @@
 - [ ] OpenScience Project → Use reinforcing ecology map (BackEnd, https://www.naturing.net/)
 - [ ] Ecology Map
 - [x] Fix a bug : navigation bar toggling for seminars
+- [ ] Fix a bug : navigation bar disabled for other pages
 - [x] Unify each subject's seminar page into one
 - [x] Automate seminars (js async github function)
 - [ ] Design main page (with SVG)
