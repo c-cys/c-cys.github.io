@@ -6,8 +6,8 @@ document.write(`
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <img class="navbar-brand" src="../assets/images/logo.png" width="50px" height="60px">
             <a class="navbar-brand" href="../index.html" style="font-size:33px; font-weight:450">
+                <img class="navbar-brand" src="../assets/images/logo.png" width="50px" height="60px">
                 GLOBE
             </a>
             
