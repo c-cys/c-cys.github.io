@@ -1,6 +1,7 @@
 # Welcome to the Website for GLOBE from GBS!
 
 ## To-Do
+- [ ] Transfer Ownership
 - [ ] OpenScience Project → Use reinforcing ecology map (BackEnd, https://www.naturing.net/)
 - [ ] Ecology Map
 - [x] Fix a bug : navigation bar toggling for seminars
